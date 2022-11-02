@@ -50,5 +50,10 @@ namespace UsersWinForms
             gestioneUtenti.Visible = true;
             logoutMenuItem.Enabled = true;
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Davide Regnani - c 2022");
+        }
     }
 }

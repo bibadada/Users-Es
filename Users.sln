@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32922.545
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32929.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users", "Users\Users.csproj", "{73C009AF-F148-43A5-879F-D31627BE8DA4}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersWpf", "UsersWpf\UsersWpf.csproj", "{C332A4DE-8276-41C2-8E1E-E5128EFAF971}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControlsAndEvents", "UserControlsAndEvents\UserControlsAndEvents.csproj", "{4E6C0D8E-F42A-433B-AF40-FE83135DB952}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersClassLibrary", "UsersClassLibrary\UsersClassLibrary.csproj", "{41DBA44A-854F-44C4-894C-D18B3D223A5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4E6C0D8E-F42A-433B-AF40-FE83135DB952}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E6C0D8E-F42A-433B-AF40-FE83135DB952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E6C0D8E-F42A-433B-AF40-FE83135DB952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41DBA44A-854F-44C4-894C-D18B3D223A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41DBA44A-854F-44C4-894C-D18B3D223A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41DBA44A-854F-44C4-894C-D18B3D223A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41DBA44A-854F-44C4-894C-D18B3D223A5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

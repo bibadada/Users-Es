@@ -10,21 +10,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UsersWpf.ViewModels;
 
 namespace UsersWpf
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logica di interazione per Login.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Login : Window
     {
-        public MainWindow()
+        public LoginViewModel vm;
+        public Login()
         {
             InitializeComponent();
+            vm = new LoginViewModel();
+            this.DataContext = vm;
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            vm.Login();
+        }
     }
 }

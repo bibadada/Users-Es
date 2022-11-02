@@ -5,8 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UsersWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="483.2">
+    <!--<Rectangle Fill="DarkSalmon" Height="100"></Rectangle>-->
+    <!--<Button>Click me</Button>-->
+    <!--<TextBox></TextBox>-->
+
+    <!--<DockPanel>
+        <Rectangle Fill="Red" DockPanel.Dock="Left" Width="100"></Rectangle>
+        <Rectangle Fill="Red" DockPanel.Dock="Right" Width="100"></Rectangle>
+        <Rectangle Fill="Blue" DockPanel.Dock="Top" Height="100"></Rectangle>
+        <Rectangle Fill="Blue" DockPanel.Dock="Bottom" Height="100"></Rectangle>        
+        <Rectangle Fill="Green"></Rectangle>
+        <StackPanel VerticalAlignment="Bottom">
+            <Rectangle Fill="Green" Height="100"></Rectangle>
+            <Rectangle Fill="Magenta" Height="60"></Rectangle>
+            <StackPanel Height="70" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Width="100" Margin="10">OK</Button>
+                <Button Width="100" Margin="10">Annulla</Button>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>-->
+
+    
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="LimeGreen"></Rectangle>
         
-    </Grid>
+    </Grid> 
+
+    
+    
 </Window>
