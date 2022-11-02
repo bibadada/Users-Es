@@ -27,7 +27,7 @@
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" >
             <Label FontSize="16">Password:</Label>
-            <TextBox Text="{Binding Password}" Height="30" FontSize="16" MaxLines="1" ></TextBox>
+            <TextBox Text="{Binding Password}" Height="30" FontSize="16" MaxLines="1"  ></TextBox>
         </StackPanel>
 
         <CheckBox IsChecked="{Binding MostraPassword}" Grid.Row="2" Grid.Column="2" Content="Mostra Psw" FontSize="14"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="22"/>

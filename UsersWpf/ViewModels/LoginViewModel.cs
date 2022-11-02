@@ -44,9 +44,9 @@ namespace UsersWpf.ViewModels
             }
         }
 
-        internal void Login()
+        public bool Login()
         {
-            throw new NotImplementedException();
+            return UsersClassLibrary.Controllers.Users.VerificaCredenziali(Username, Password);
         }
     }
 }

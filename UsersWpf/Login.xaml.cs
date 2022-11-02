@@ -30,7 +30,10 @@ namespace UsersWpf
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            vm.Login();
+            if (vm.Login())
+                MessageBox.Show("Login corretto");
+            else
+                MessageBox.Show("Login errato");
         }
     }
 }
