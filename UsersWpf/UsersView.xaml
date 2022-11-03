@@ -21,19 +21,36 @@
 
         <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Margin="10">
             <Label FontSize="16">Filtra per nome</Label>
-            <TextBox Text="" Height="30" FontSize="16" MaxLines="1"></TextBox>
+            <TextBox Text="{Binding FiltroNome, UpdateSourceTrigger=PropertyChanged}" Height="30" FontSize="16" MaxLines="1"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Margin="10" >
             <Label FontSize="16">Filtra per sesso</Label>
-            <ComboBox Height="30" FontSize="16"></ComboBox>
+            <ComboBox ItemsSource="{Binding ListaSessi}" SelectedItem="{Binding FiltroSesso}" Height="30" FontSize="16"></ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom" Margin="10">
-            <Button  Content="Azzera" Height="40" Margin="10 0 10 0" FontSize="14"/>
+            <Button  Content="Azzera" Height="40" Margin="10 0 10 0" FontSize="14" Click="Button_Click"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="0">
-            <Button  Content="Nuovo utente" Height="40" Margin="10 0 10 0" FontSize="16"/>
+            <Button  Content="Nuovo utente" Height="70" Margin="10 0 10 0" FontSize="16" Click="Button_Click_NuovoUtente"/>
         </StackPanel>
-        <DataGrid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="10"></DataGrid>
+        <DataGrid ItemsSource="{Binding DatiUtenti}" AutoGenerateColumns="False" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="10" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Surname" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
+                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Username" Binding="{Binding Username}"/>
+                <DataGridTextColumn Header="Birth date" Binding="{Binding BirthDate}"/>
+
+                <DataGridTextColumn Header="Address" Binding="{Binding Address.Address}"/>
+                <DataGridTextColumn Header="City" Binding="{Binding Address.City}"/>
+                <DataGridTextColumn Header="Postal Code" Binding="{Binding Address.PostalCode}"/>
+                <DataGridTextColumn Header="State" Binding="{Binding Address.State}"/>
+            </DataGrid.Columns>
+            
+        </DataGrid>
         
 
     </Grid>

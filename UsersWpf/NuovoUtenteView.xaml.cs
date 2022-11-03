@@ -11,29 +11,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using UsersWpf.ViewModels;
 
 namespace UsersWpf
 {
     /// <summary>
-    /// Logica di interazione per Login.xaml
+    /// Logica di interazione per NuovoUtenteView.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class NuovoUtenteViewModel : Window
     {
-        private LoginViewModel vm;
-        public Login()
+        private NuovoUtenteViewModel vm;
+        public NuovoUtenteViewModel()
         {
             InitializeComponent();
-            vm = new LoginViewModel();
+            vm = new NuovoUtenteViewModel();
             this.DataContext = vm;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (vm.Login())
-                MessageBox.Show("Login corretto");
-            else
-                MessageBox.Show("Login errato");
         }
     }
 }

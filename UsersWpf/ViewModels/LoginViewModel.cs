@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UsersWpf.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    class LoginViewModel : BaseViewModel
     {
         private string _username = "";
 

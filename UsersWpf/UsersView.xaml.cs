@@ -20,12 +20,23 @@ namespace UsersWpf
     /// </summary>
     public partial class UsersView : Window
     {
-        public UsersViewModel vm;
+        private UsersViewModel vm;
         public UsersView()
         {
             InitializeComponent();
             vm = new UsersViewModel();
             this.DataContext = vm;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            vm.AzzeraFiltri();
+        }
+
+        private void Button_Click_NuovoUtente(object sender, RoutedEventArgs e)
+        {
+            NuovoUtenteViewModel nu = new NuovoUtenteViewModel();
+            nu.ShowDialog();
         }
     }
 }
