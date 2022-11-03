@@ -8,7 +8,7 @@ namespace UsersWpf.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private string _username;
+        private string _username = "";
 
         public string Username
         {
@@ -20,7 +20,7 @@ namespace UsersWpf.ViewModels
             }
         }
 
-        private string _password;
+        private string _password = "";
 
         public string Password
         {
