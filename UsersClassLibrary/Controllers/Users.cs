@@ -84,7 +84,26 @@ namespace UsersClassLibrary.Controllers
 
         public static bool VerificaCredenziali(string u, string p)
         {
-            return Find(q => q.Username.ToLower() == u.ToLower() && q.Password == p) != null;
+            if (u == null || p == null) return false;
+            if (string.IsNullOrEmpty(u) || string.IsNullOrEmpty(p)) return false;
+
+            User user = Find(q => q.Username.ToLower() == u.ToLower());
+
+            if (user != null && user.Password == p)
+            {
+                Logins.Add(new Login(user.Id, true, DateTime.Now));
+                return true;
+            }
+            else if (user != null && user.Password != p)
+            {
+                Logins.Add(new Login(user.Id, false, DateTime.Now));
+                return false;
+            }
+            else
+            {
+                Logins.Add(new Login(-1, false, DateTime.Now));
+                return false;
+            }
         }
 
         public static bool InviaMailDiRecupero(string m)
