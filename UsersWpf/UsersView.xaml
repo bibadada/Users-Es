@@ -10,7 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2.5*"/>
             <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -30,8 +30,8 @@
         <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom" Margin="10">
             <Button  Content="Azzera" Height="40" Margin="10 0 10 0" FontSize="14" Click="Button_Click" FontWeight="Normal"/>
         </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="0">
-            <Button  Content="Nuovo utente" Height="70" Margin="10 0 10 0" FontSize="16" Click="Button_Click_NuovoUtente"/>
+        <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="10">
+            <Button  Content="Nuovo utente" Height="70"  FontSize="16" Click="Button_Click_NuovoUtente"/>
         </StackPanel>
         <DataGrid SelectedItem="{Binding UtenteSelezionato}" ItemsSource="{Binding DatiUtenti}" AutoGenerateColumns="False" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="10" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" MouseDoubleClick="DataGrid_MouseDoubleClick">
             <DataGrid.Columns>

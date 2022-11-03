@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 using UsersWpf.ViewModels;
 
 namespace UsersWpf
@@ -18,7 +19,7 @@ namespace UsersWpf
     /// <summary>
     /// Logica di interazione per NuovoUtenteView.xaml
     /// </summary>
-    public partial class NuovoUtenteView : Window
+    public partial class NuovoUtenteView : MetroWindow
     {
         private NuovoUtenteViewModel vm;
         public NuovoUtenteView()
