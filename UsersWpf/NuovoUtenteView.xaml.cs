@@ -11,20 +11,26 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UsersWpf.ViewModels;
 
 namespace UsersWpf
 {
     /// <summary>
     /// Logica di interazione per NuovoUtenteView.xaml
     /// </summary>
-    public partial class NuovoUtenteViewModel : Window
+    public partial class NuovoUtenteView : Window
     {
         private NuovoUtenteViewModel vm;
-        public NuovoUtenteViewModel()
+        public NuovoUtenteView()
         {
             InitializeComponent();
             vm = new NuovoUtenteViewModel();
             this.DataContext = vm;
+        }
+
+        private void Button_ClickAnnulla(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
