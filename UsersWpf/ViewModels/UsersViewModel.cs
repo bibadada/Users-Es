@@ -50,6 +50,11 @@ namespace UsersWpf.ViewModels
             LoadData();
         }
 
+        public void EditUser()
+        {
+            throw new NotImplementedException();
+        }
+
         private string _filtroSesso;
 
         public string FiltroSesso

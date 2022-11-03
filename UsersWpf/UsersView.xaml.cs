@@ -37,5 +37,10 @@ namespace UsersWpf
         {
             vm.NewUser();
         }
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            vm.EditUser();//DA IMPLEMENTARE
+        }
     }
 }
