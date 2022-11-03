@@ -43,6 +43,13 @@ namespace UsersWpf.ViewModels
             }
         }
 
+        public void NewUser()
+        {
+            NuovoUtenteView nu = new NuovoUtenteView();
+            nu.ShowDialog();
+            LoadData();
+        }
+
         private string _filtroSesso;
 
         public string FiltroSesso

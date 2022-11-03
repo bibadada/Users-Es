@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UsersClassLibrary.Controllers;
+using UsersClassLibrary.Models;
 
 namespace UsersWpf.ViewModels
 {
@@ -12,8 +13,24 @@ namespace UsersWpf.ViewModels
         public NuovoUtenteViewModel()
         {
             ListaSessi = Users.GetGenders();
+            SelectedUser = new User();
+
         }
-        
+
+        private User _selectedUser;
+
+        public User SelectedUser
+        {
+            get { return _selectedUser; }
+            set
+            {
+                _selectedUser = value;
+                NotifyPropretyChanged("SelectedUser");
+            }
+        }
+
+
+
         private List<string> _listaSessi;
 
         public List<string> ListaSessi
@@ -26,6 +43,10 @@ namespace UsersWpf.ViewModels
             }
         }
 
-
+        public void Salva()
+        {
+            SelectedUser.Age = (int)((DateTime.Today - SelectedUser.BirthDate).TotalDays / 365.25);
+            Users.Add(SelectedUser);
+        }
     }
 }

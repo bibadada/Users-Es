@@ -35,8 +35,7 @@ namespace UsersWpf
 
         private void Button_Click_NuovoUtente(object sender, RoutedEventArgs e)
         {
-            NuovoUtenteView nu = new NuovoUtenteView();
-            nu.ShowDialog();
+            vm.NewUser();
         }
     }
 }

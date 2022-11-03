@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UsersWpf"
         mc:Ignorable="d"
-        Title="NuovoUtenteView" Height="496.4" Width="1048.2">
+        Title="NuovoUtenteView" Height="540" Width="820" MinWidth="820" MinHeight="534">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -23,46 +23,46 @@
 
         <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Margin="10">
             <Label FontSize="16">ID:</Label>
-            <TextBox Text="{Binding a}" Height="30" FontSize="16" MaxLines="1"></TextBox>
+            <TextBox Text="{Binding SelectedUser.Id}" Height="30" FontSize="16" MaxLines="1"></TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Margin="10">
             <Label FontSize="16">Email:</Label>
-            <TextBox Text="{Binding a}" Height="30" FontSize="16" MaxLines="1"></TextBox>
+            <TextBox Text="{Binding SelectedUser.Email}" Height="30" FontSize="16" MaxLines="1"></TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="10">
             <Label FontSize="16">Nome:</Label>
-            <TextBox Text="{Binding a}" Height="30" FontSize="16" MaxLines="1"></TextBox>
+            <TextBox Text="{Binding SelectedUser.FirstName}" Height="30" FontSize="16" MaxLines="1"></TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" Margin="10">
             <Label FontSize="16">Cognome:</Label>
-            <TextBox Text="{Binding a}" Height="30" FontSize="16" MaxLines="1"></TextBox>
+            <TextBox Text="{Binding SelectedUser.LastName}" Height="30" FontSize="16" MaxLines="1"></TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="10">
             <Label FontSize="16">Sesso:</Label>
-            <ComboBox Height="30" FontSize="16" ItemsSource="{Binding ListaSessi}" ></ComboBox>
+            <ComboBox SelectedItem="{Binding SelectedUser.Gender}" ItemsSource="{Binding ListaSessi}" Height="30" FontSize="16"></ComboBox>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" Margin="10">
             <Label FontSize="16">Data di Nascita:</Label>
-            <DatePicker  Height="30" FontSize="16" ></DatePicker>
+            <DatePicker SelectedDate="{Binding SelectedUser.BirthDate}" Height="30" FontSize="16" ></DatePicker>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" Margin="10">
             <Label FontSize="16">Username:</Label>
-            <TextBox Text="{Binding a}" Height="30" FontSize="16" MaxLines="1"></TextBox>
+            <TextBox Text="{Binding SelectedUser.Username}" Height="30" FontSize="16" MaxLines="1"></TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" Margin="10">
             <Label FontSize="16">Password:</Label>
-            <TextBox Text="{Binding a}" Height="30" FontSize="16" MaxLines="1"></TextBox>
+            <TextBox Text="{Binding SelectedUser.Password}" Height="30" FontSize="16" MaxLines="1"></TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-            <Button  Content="Salva" Width="100" Height="30" Margin="0 0 10 0" FontSize="14"></Button>
+            <Button x:Name="Salva"  Content="Salva" Width="100" Height="30" Margin="0 0 10 0" FontSize="14" Click="Salva_Click"></Button>
             <Button  Content="Annulla" Width="100" Height="30" Margin="0 0 20 0" FontSize="14" Click="Button_ClickAnnulla"></Button>
         </StackPanel>
 
