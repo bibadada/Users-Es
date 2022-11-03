@@ -16,8 +16,8 @@ namespace UsersWpf.ViewModels
             DatiUtenti = Users.GetAll();
 
         }
-        
-        
+
+
         private string _filtroNome;
 
         public string FiltroNome
@@ -74,6 +74,19 @@ namespace UsersWpf.ViewModels
                 NotifyPropretyChanged("DatiUtenti");
             }
         }
+
+        private User _utenteSelezionato;
+
+        public User UtenteSelezionato
+        {
+            get { return _utenteSelezionato; }
+            set
+            { 
+                _utenteSelezionato = value;
+                NotifyPropretyChanged("UtenteSelezionato");
+            }
+        }
+
 
         private void LoadData()
         {

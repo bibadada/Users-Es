@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace UsersWpf.ViewModels
     {
         public NuovoUtenteViewModel()
         {
-            ListaSessi = Users.GetGenders();
+            ListaSessi = new ObservableCollection<string>(Users.GetGenders());
             SelectedUser = new User();
 
         }
@@ -31,9 +32,9 @@ namespace UsersWpf.ViewModels
 
 
 
-        private List<string> _listaSessi;
+        private ObservableCollection<string> _listaSessi;
 
-        public List<string> ListaSessi
+        public ObservableCollection<string> ListaSessi
         {
             get { return _listaSessi; }
             set

@@ -18,7 +18,7 @@ namespace UsersWpf
     /// <summary>
     /// Logica di interazione per Login.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class Login : Page
     {
         private LoginViewModel vm;
         public Login()
@@ -31,9 +31,19 @@ namespace UsersWpf
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (vm.Login())
-                MessageBox.Show("Login corretto");
+                NavigationService.Navigate(new UsersView());
             else
                 MessageBox.Show("Login errato");
+        }
+
+        private void TextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                
+                Button_Click(sender, null);
+            }
+                
         }
     }
 }
