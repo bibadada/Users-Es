@@ -20,7 +20,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label FontSize="36" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontFamily="Segoe UI Black">Login</Label>
+        <Label  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="2" Style="{StaticResource LabelTitolo}" >Login</Label>
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
             <Label FontSize="16">Username:</Label>
             <TextBox Text="{Binding Username}" Height="30" FontSize="16" MaxLines="1" ></TextBox>

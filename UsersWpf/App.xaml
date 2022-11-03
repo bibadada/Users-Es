@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:UsersWpf"
              StartupUri="UsersView.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <Style x:Key="LabelTitolo" TargetType="Label">
+                <Setter Property="FontSize" Value="36"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="Segoe UI Black"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
