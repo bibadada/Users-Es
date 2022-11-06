@@ -40,7 +40,7 @@ namespace UsersWpf
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            vm.EditUser();//DA IMPLEMENTARE
+            vm.EditUser(((DataGrid)sender).SelectedItem);//DA IMPLEMENTARE 
         }
     }
 }

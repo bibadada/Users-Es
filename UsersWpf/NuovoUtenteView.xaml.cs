@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using UsersClassLibrary.Models;
 using UsersWpf.ViewModels;
 
 namespace UsersWpf
@@ -22,12 +23,42 @@ namespace UsersWpf
     public partial class NuovoUtenteView : MetroWindow
     {
         private NuovoUtenteViewModel vm;
+        public User UserSelezionato { get; }
+        
+
         public NuovoUtenteView()
         {
             InitializeComponent();
             vm = new NuovoUtenteViewModel();
             this.DataContext = vm;
+            vm.Titolo = "Nuovo utente";
+            vm.TitoloScheda = "Nuovo utente";
         }
+
+        public NuovoUtenteView(User userSelezionato)
+        {
+            InitializeComponent();
+            vm = new NuovoUtenteViewModel();
+            this.DataContext = vm;
+            vm.SelectedUser = new User()
+            {
+                Id = userSelezionato.Id,
+                FirstName = userSelezionato.FirstName,
+                Age = userSelezionato.Age,
+                Gender = userSelezionato.Gender,
+                Email = userSelezionato.Email,
+                Username = userSelezionato.Username,
+                Password = userSelezionato.Password,
+                BirthDate = userSelezionato.BirthDate,
+                Address = userSelezionato.Address
+
+            };
+            vm.EditedUser = userSelezionato;
+            //editMode = true;
+            vm.EditMode();
+            
+        }
+
 
         private void Button_ClickAnnulla(object sender, RoutedEventArgs e)
         {

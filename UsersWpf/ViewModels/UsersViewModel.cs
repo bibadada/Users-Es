@@ -50,9 +50,14 @@ namespace UsersWpf.ViewModels
             LoadData();
         }
 
-        public void EditUser()
+        public void EditUser(object selezionato)
         {
-            throw new NotImplementedException();
+            User userSelezionato = (User)selezionato;
+            if (selezionato == null) return;
+            NuovoUtenteView nu = new NuovoUtenteView(userSelezionato);
+            nu.ShowDialog();
+            LoadData();
+
         }
 
         private string _filtroSesso;

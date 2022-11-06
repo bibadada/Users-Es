@@ -30,6 +30,32 @@ namespace UsersWpf.ViewModels
             }
         }
 
+        public User EditedUser;
+        private bool editMode = false;
+
+        private string _Titolo;
+
+        public string Titolo
+        {
+            get { return _Titolo; }
+            set
+            {
+                _Titolo = value;
+                NotifyPropretyChanged("Titolo");
+            }
+        }
+
+        private string _TitoloScheda;
+        public string TitoloScheda
+        {
+            get { return _TitoloScheda; }
+            set
+            {
+                _TitoloScheda = value;
+                NotifyPropretyChanged("TitoloScheda");
+            }
+        }
+
 
 
         private ObservableCollection<string> _listaSessi;
@@ -44,10 +70,29 @@ namespace UsersWpf.ViewModels
             }
         }
 
+        internal void EditMode()
+        {
+            Titolo = "Modifica Utente";
+            TitoloScheda = "Modifica Utente";
+            
+            editMode = true;
+        }
+
         public void Salva()
         {
-            SelectedUser.Age = (int)((DateTime.Today - SelectedUser.BirthDate).TotalDays / 365.25);
-            Users.Add(SelectedUser);
+            if(editMode)
+            {
+                if ((!SelectedUser.Equals(EditedUser) && Users.Update(EditedUser.Id, SelectedUser)) == false)
+                {
+                    throw new Exception("Errore nell'aggiornamento");
+                }
+            }
+            else
+            {
+                SelectedUser.Age = (int)((DateTime.Today - SelectedUser.BirthDate).TotalDays / 365.25);
+                Users.Add(SelectedUser);
+            }
+            
         }
     }
 }

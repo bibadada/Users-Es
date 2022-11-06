@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UsersWpf"
         mc:Ignorable="d"
-        Title="NuovoUtenteView" Height="540" Width="820" MinWidth="820" MinHeight="534">
+        Title="{Binding TitoloScheda}" Height="540" Width="820" MinWidth="820" MinHeight="534">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -20,7 +20,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="10" Style="{StaticResource LabelTitolo}" >Nuovo Utente</Label>
+        <Label Content="{Binding Titolo}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="10" Style="{StaticResource LabelTitolo}" ></Label>
 
         <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Margin="10">
             <Label FontSize="16">ID:</Label>
