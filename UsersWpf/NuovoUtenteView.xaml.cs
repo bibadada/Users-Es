@@ -44,6 +44,7 @@ namespace UsersWpf
             {
                 Id = userSelezionato.Id,
                 FirstName = userSelezionato.FirstName,
+                LastName = userSelezionato.LastName,
                 Age = userSelezionato.Age,
                 Gender = userSelezionato.Gender,
                 Email = userSelezionato.Email,
