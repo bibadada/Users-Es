@@ -15,8 +15,20 @@ namespace UsersWpf.ViewModels
         {
             ListaSessi = new ObservableCollection<string>(Users.GetGenders());
             SelectedUser = new User();
-
         }
+
+        private bool _IdEnabled;
+
+        public bool IdEnabled
+        {
+            get { return _IdEnabled; }
+            set
+            {
+                _IdEnabled = value;
+                NotifyPropretyChanged("IdEnabled");
+            }
+        }
+
 
         private User _selectedUser;
 

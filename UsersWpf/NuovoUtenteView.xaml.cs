@@ -33,6 +33,7 @@ namespace UsersWpf
             this.DataContext = vm;
             vm.Titolo = "Nuovo utente";
             vm.TitoloScheda = "Nuovo utente";
+            vm.IdEnabled = true;
         }
 
         public NuovoUtenteView(User userSelezionato)
@@ -55,6 +56,7 @@ namespace UsersWpf
 
             };
             vm.EditedUser = userSelezionato;
+            vm.IdEnabled = false;
             //editMode = true;
             vm.EditMode();
             
@@ -71,5 +73,7 @@ namespace UsersWpf
             vm.Salva();
             this.Close();
         }
+
+        
     }
 }
