@@ -42,7 +42,7 @@ namespace UsersClassLibrary.Controllers
                 Email = (string)reader["Email"],
                 Username = (string)reader["Username"],
                 Password = (string)reader["Password"],
-                BirthDate = (DateTime)reader["BirthDate"],
+                BirthDate = reader.IsDBNull(reader.GetOrdinal("BirthDate")) == true ? DateTime.Today : (DateTime)reader["BirthDate"],
                 Address = new FullAddress
                 {
                     Address = (string)reader["Address"],
