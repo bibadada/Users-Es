@@ -12,6 +12,9 @@ namespace UsersClassLibrary.Controllers
     public static class Logins
     {
         private static List<Login> _logins;
+
+        private static string connectionString { get; } = Users.connectionString;
+
         public static List<Login> GetAll()
         {
             if (_logins == null)

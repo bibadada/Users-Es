@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -12,21 +13,83 @@ namespace UsersClassLibrary.Controllers
 {
     public static class Users
     {
-        private static List<User> _users;
+        public static string connectionString { get; } = ConfigurationManager.ConnectionStrings["DatabaseUsers"].ConnectionString;
         public static List<User> GetAll()
         {
+
+
+            /* //VECCHIA IMPLEMENTAZIONE PER JSON
             if (_users == null)
             {
                 if (!File.Exists(@".\Models\database.json")) return new List<User>();
                 string json = File.ReadAllText(@".\Models\database.json");
                 _users = JsonConvert.DeserializeObject<List<User>>(json);
             }
-            return _users;
+            return _users;*/
+            return FindAll("", "");
+            
         }
 
-        public static List<User> FindAll(Predicate<User> condizione)
+        //public static List<User> FindAll(Predicate<User> condizione)
+        public static List<User> FindAll(string nome, string sex)
         {
-            return GetAll().FindAll(condizione);
+            List<User> retVal = new List<User>();
+            if (string.IsNullOrWhiteSpace(nome)) nome = "";
+            if (string.IsNullOrWhiteSpace(sex)) sex = "";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+
+                    cmd.CommandText = "SELECT * FROM Users ";
+                    cmd.CommandText += "WHERE (FirstName LIKE @name OR LastName LIKE @name) AND Gender LIKE @sex ";
+                    
+                    cmd.Parameters.AddWithValue("@name", $"%{nome}%");
+                    cmd.Parameters.AddWithValue("@sex", $"{sex}%");
+
+                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            retVal.Add(new User
+                            {
+                                Id = (int)reader["Id"],
+                                FirstName = (string)reader["FirstName"],
+                                LastName = (string)reader["LastName"],
+                                Age = (int)reader["Age"],
+                                Gender = (string)reader["Gender"],
+                                Email = (string)reader["Email"],
+                                Username = (string)reader["Username"],
+                                Password = (string)reader["Password"],
+                                BirthDate = (DateTime)reader["BirthDate"],
+                                Address = new FullAddress
+                                { 
+                                    Address = (string)reader["Address"],
+                                    City = (string)reader["City"],
+                                    PostalCode = (string)reader["PostalCode"],
+                                    State = (string)reader["State"]
+                                }
+
+                            });
+
+                        }
+                    }
+                    //fine usingDataReader
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+
+            return retVal;
+            //return GetAll().FindAll(condizione);
         }
 
         public static User Find(Predicate<User> condizione)
@@ -89,7 +152,8 @@ namespace UsersClassLibrary.Controllers
             if (string.IsNullOrEmpty(u) || string.IsNullOrEmpty(p)) return false;
 
             //User user = Find(q => q.Username.ToLower() == u.ToLower());
-            string connectionString = @"Server=DESKTOP-9GRQ3GS\SQLEXPRESS; Database=Users; Integrated Security=True;TrustServerCertificate=True";
+            //string connectionString = @"Server=DESKTOP-9GRQ3GS\SQLEXPRESS; Database=Users; Integrated Security=True;TrustServerCertificate=True";
+            //string connectionString = ConfigurationManager.ConnectionStrings["DatabaseUsers"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
