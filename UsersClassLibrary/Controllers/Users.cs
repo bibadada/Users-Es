@@ -53,6 +53,25 @@ namespace UsersClassLibrary.Controllers
 
             };
         }
+        private static SqlParameter[] UserToParameters(User u)
+        {
+            SqlParameter[] sp = new SqlParameter[] {
+                new SqlParameter("@Id", u.Id),
+                new SqlParameter("@FirstName", u.FirstName),
+                new SqlParameter("@LastName", u.LastName),
+                new SqlParameter("@Age", u.Age),
+                new SqlParameter("@Gender", u.Gender),
+                new SqlParameter("@Email", u.Email),
+                new SqlParameter("@Username", u.Username),
+                new SqlParameter("@Password", u.Password),
+                new SqlParameter("@BirthDate", u.BirthDate),
+                new SqlParameter("@Address", u.Address == null ? "" : u.Address.Address),
+                new SqlParameter("@City", u.Address == null ? "" : u.Address.City),
+                new SqlParameter("@PostalCode", u.Address == null ? "" : u.Address.PostalCode),
+                new SqlParameter("@State", u.Address == null ? "" : u.Address.State)
+            };
+            return sp;
+        }
 
         //public static List<User> FindAll(Predicate<User> condizione)
         public static List<User> FindAll(string nome, string sex)
@@ -188,23 +207,9 @@ namespace UsersClassLibrary.Controllers
                     command.Connection = connection;
                     command.CommandText = "INSERT INTO Users VALUES " +
                     "(@Id, @FirstName, @LastName, @Age, @Gender, @Email, @Username, @Password, @BirthDate, @Address, @City, @PostalCode, @State)";
-                    command.Parameters.AddWithValue("@Id", u.Id);
-                    command.Parameters.AddWithValue("@FirstName", u.FirstName);
-                    command.Parameters.AddWithValue("@LastName", u.LastName);
-                    command.Parameters.AddWithValue("@Age", u.Age);
-                    command.Parameters.AddWithValue("@Gender", u.Gender);
-                    command.Parameters.AddWithValue("@Email", u.Email);
-                    command.Parameters.AddWithValue("@Username", u.Username);
-                    command.Parameters.AddWithValue("@Password", u.Password);
-                    command.Parameters.AddWithValue("@BirthDate", u.BirthDate);
-                    command.Parameters.AddWithValue("@Address", u.Address == null ? "" : u.Address.Address);
-                    command.Parameters.AddWithValue("@City", u.Address == null ? "" : u.Address.City);
-                    command.Parameters.AddWithValue("@PostalCode", u.Address == null ? "" : u.Address.PostalCode);
-                    command.Parameters.AddWithValue("@State", u.Address == null ? "" : u.Address.State);
+                    command.Parameters.AddRange(UserToParameters(u));
 
                     command.ExecuteNonQuery();
-
-
                 }
                 catch (Exception)
                 {
@@ -227,42 +232,20 @@ namespace UsersClassLibrary.Controllers
                     command.Connection = connection;
                     command.CommandText = "UPDATE Users ";
                     command.CommandText += "SET FirstName = @FirstName, ";
-                    command.Parameters.AddWithValue("@FirstName", u.FirstName);
-
                     command.CommandText += "  LastName = @LastName, ";
-                    command.Parameters.AddWithValue("@LastName", u.LastName);
-
                     command.CommandText += "  Age = @Age, ";
-                    command.Parameters.AddWithValue("@Age", u.Age);
-
                     command.CommandText += "  Gender = @Gender, ";
-                    command.Parameters.AddWithValue("@Gender", u.Gender);
-
                     command.CommandText += "  Email = @Email, ";
-                    command.Parameters.AddWithValue("@Email", u.Email);
-
                     command.CommandText += "  Username = @Username, ";
-                    command.Parameters.AddWithValue("@Username", u.Username);
-
                     command.CommandText += "  Password = @Password, ";
-                    command.Parameters.AddWithValue("@Password", u.Password);
-
                     command.CommandText += "  BirthDate = @BirthDate, ";
-                    command.Parameters.AddWithValue("@BirthDate", u.BirthDate);
-
                     command.CommandText += "  Address = @Address, ";
-                    command.Parameters.AddWithValue("@Address", u.Address == null ? "" : u.Address.Address);
-
                     command.CommandText += "  City = @City, ";
-                    command.Parameters.AddWithValue("@City", u.Address == null ? "" : u.Address.City);
-
                     command.CommandText += "  PostalCode = @PostalCode, ";
-                    command.Parameters.AddWithValue("@PostalCode", u.Address == null ? "" : u.Address.PostalCode);
-
                     command.CommandText += "  State = @State ";
-                    command.Parameters.AddWithValue("@State", u.Address == null ? "" : u.Address.State);
                     command.CommandText += "WHERE Id = @Id";
-                    command.Parameters.AddWithValue("@Id", u.Id);
+
+                    command.Parameters.AddRange(UserToParameters(u));
 
                     if (command.ExecuteNonQuery() != 1)
                         return false;
