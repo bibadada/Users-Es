@@ -26,7 +26,7 @@ namespace UsersClassLibrary.Controllers
                 _users = JsonConvert.DeserializeObject<List<User>>(json);
             }
             return _users;*/
-            return FindAll("", "");
+            return FindAll(null, null);
             
         }
 
@@ -92,10 +92,130 @@ namespace UsersClassLibrary.Controllers
             //return GetAll().FindAll(condizione);
         }
 
-        public static User Find(Predicate<User> condizione)
+        public static User Find(int Id)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //User retVal = new User();
+                try
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+
+                    cmd.CommandText = "SELECT TOP 1 * FROM Users ";
+                    cmd.CommandText += "WHERE Id = @Id ";
+
+                    cmd.Parameters.AddWithValue("@Id", Id);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if(reader.Read())
+                        {
+                            User retVal = new User
+                            {
+                                Id = (int)reader["Id"],
+                                FirstName = (string)reader["FirstName"],
+                                LastName = (string)reader["LastName"],
+                                Age = (int)reader["Age"],
+                                Gender = (string)reader["Gender"],
+                                Email = (string)reader["Email"],
+                                Username = (string)reader["Username"],
+                                Password = (string)reader["Password"],
+                                BirthDate = (DateTime)reader["BirthDate"],
+                                Address = new FullAddress
+                                {
+                                    Address = (string)reader["Address"],
+                                    City = (string)reader["City"],
+                                    PostalCode = (string)reader["PostalCode"],
+                                    State = (string)reader["State"]
+                                }
+
+                            };
+                            return retVal;
+
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    //fine usingDataReader
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                
+            }
+
+        }
+
+        public static User Find(string Email)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //User retVal = new User();
+                try
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+
+                    cmd.CommandText = "SELECT TOP 1 * FROM Users ";
+                    cmd.CommandText += "WHERE Email = @Email ";
+
+                    cmd.Parameters.AddWithValue("@Email", Email);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            User retVal = new User
+                            {
+                                Id = (int)reader["Id"],
+                                FirstName = (string)reader["FirstName"],
+                                LastName = (string)reader["LastName"],
+                                Age = (int)reader["Age"],
+                                Gender = (string)reader["Gender"],
+                                Email = (string)reader["Email"],
+                                Username = (string)reader["Username"],
+                                Password = (string)reader["Password"],
+                                BirthDate = (DateTime)reader["BirthDate"],
+                                Address = new FullAddress
+                                {
+                                    Address = (string)reader["Address"],
+                                    City = (string)reader["City"],
+                                    PostalCode = (string)reader["PostalCode"],
+                                    State = (string)reader["State"]
+                                }
+
+                            };
+                            return retVal;
+
+                        }
+                        else
+                            return null;
+                    }
+                    //fine usingDataReader
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+            }
+
+        }
+
+        /*public static User Find(Predicate<User> condizione)
         {
             return GetAll().Find(condizione);
-        }
+        }*/
 
         public static void Add(User u)
         {
@@ -105,7 +225,7 @@ namespace UsersClassLibrary.Controllers
         public static bool Update(int id, User u)
         {
             if (u.Id != id) return false;
-            User candidate = Find(q => q.Id == id);
+            User candidate = Find(id);
             if (candidate == null) return false;
 
             candidate.FirstName = u.FirstName;
@@ -199,7 +319,7 @@ namespace UsersClassLibrary.Controllers
 
         public static bool InviaMailDiRecupero(string m)
         {
-            return Find(u => u.Email.ToLower() == m.ToLower()) != null;
+            return Find(m) != null;
         }
     }
 }
